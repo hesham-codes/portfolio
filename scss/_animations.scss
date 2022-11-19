@@ -1,0 +1,140 @@
+@keyframes rattle {
+    0% {
+        scale: 1;
+    }
+    5% {
+        scale: 1.1;
+    }
+    10% {
+        scale: 1;
+    }
+    15% {
+        scale: 1.1;
+    }
+    20% {
+        scale: 1;
+    }
+    25% {
+        scale: 1.1;
+    }
+    30% {
+        scale: 1;
+    }
+    35% {
+        scale: 1.1;
+    }
+    40% {
+        scale: 1;
+    }
+    45% {
+        scale: 1.1;
+    }
+    50% {
+        scale: 1;
+    }
+    55% {
+        scale: 1.1;
+    }
+    60% {
+        scale: 1;
+    }
+    65% {
+        scale: 1.1;
+    }
+    70% {
+        scale: 1;
+    }
+    75% {
+        scale: 1.1;
+    }
+    80% {
+        scale: 1;
+    }
+    85% {
+        scale: 1.1;
+    }
+    90% {
+        scale: 1;
+    }
+    95% {
+        scale: 1.1;
+    }
+    
+}
+
+@keyframes circle-creation{
+    0%{
+        border-color: transparent;
+        transform: rotateZ(0deg);
+    }
+    25%{
+        border-color: transparent #fff transparent transparent;
+        transform: rotateZ(-35deg);
+    }
+    50%{
+        border-color: transparent #fff  #fff transparent;
+    }
+    75%{
+        border-color: transparent #fff #fff #fff;
+    }
+    100%{
+        border-color: #fff;
+        transform: rotateZ(-300deg)
+    }  
+}
+
+
+@mixin fade-out-animation($duration, $display, $height:auto, $width:auto, $z-index:auto) {
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+            display: $display;
+            height: $height;
+            width: $width;
+            z-index: $z-index;
+        }
+
+        99%{
+            opacity: 0;
+            height: $height;
+            width: $width;
+            z-index: $z-index;
+        }
+
+        100%{
+            height: 0px;
+            width: 0px;
+            z-index: -1;
+        }
+    }
+
+    animation: fade-out $duration;
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+}
+
+@mixin fade-in-animation($duration, $display, $height: auto, $width:auto, $z-index:auto) {
+    @keyframes fade-in {
+        0% {
+            display: $display;
+            opacity: 0;
+            width: 0px;
+            height: 0px;
+            z-index: $z-index;
+        }
+
+        100%{
+            opacity: 1;
+            height: $height;
+            width: $width;
+            z-index: $z-index;
+        }
+    }
+
+    animation: fade-in $duration;
+    opacity: 1;
+    height: $height;
+    width: $width;
+    display: $display;
+}

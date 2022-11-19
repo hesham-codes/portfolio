@@ -1,0 +1,204 @@
+nav {
+    min-height: 40px;
+    max-width: 100%;
+    padding: 10px;
+    margin: 0px;
+    background-color: $primary-color;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    transition: 3s;
+    
+    .nav-items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 3s;
+
+        .nav-leading {
+            .nav-brand {
+                width: max-content;
+            }
+        }
+    }
+}
+
+.nav-link {
+    color: white;
+    padding: 0px 5px;
+    max-width: 100%;
+    transition: 0.5s;
+
+    &:hover {
+        font-size: 120%;
+        background-color: blue;
+    }
+
+    &.active {
+        text-decoration: underline;
+    }
+}
+
+.nav-trailing-items {
+    display: flex;
+    align-items: center;
+
+    .nav-links {
+        width: 1px;
+        display: flex;
+        opacity: 0;
+        transform: translateY(-100px);
+        transition: 0.5s;
+
+        .divider {
+            background-color: white;
+            width: 1px;
+            min-height: 20px;
+            margin: 0px 10px;
+        }
+    }
+
+    .nav-links-mobile {
+        position: absolute;
+        padding-top: 30px;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(-100vw);
+        gap: 30px;
+        top: 60px;
+        left: 0px;
+        bottom: 0px;
+        background-color: black;
+        min-width: 100vw;
+        min-height: calc(100vh - 60px);
+        opacity: 0;
+        transition: 0.5s;
+    }
+
+    button.nav-menu-btn {
+        border: solid 3px transparent;
+        border-radius: 0%;
+        height: 40px;
+        width: 45px;
+        display: grid;
+        place-items: center;
+        transition: 0.5s;
+        overflow: hidden;
+
+        &:hover {
+            border: solid 2px white;
+            border-radius: 50%;
+
+            &:active {
+                scale: 0.9;
+            }
+        }
+
+        .hamburger {
+            .hamburger-line {
+                background-color: white;
+                height: 3px;
+                width: 30px;
+                border-radius: 40px;
+                transition: 1s;
+
+                &:first-child {
+                    transform: translateY(-3px);
+                }
+                &:nth-child(2) {
+                    opacity: 1;
+                }
+                &:last-child {
+                    transform: translateY(3px);
+                }
+            }
+        }
+    }
+
+    &.open {
+        .nav-links {
+
+            .divider {
+                display:none;
+            }
+        }
+
+        .nav-links-mobile{
+            transform: translateX(0);
+            opacity: 1;
+            
+        }
+
+        button.nav-menu-btn {
+            .hamburger {   
+                .hamburger-line {
+
+                    &:first-child {
+                        transform: translateY(3px) rotateZ(0.125turn);
+                        transform-origin: center;
+                    }
+
+                    &:nth-child(2) {
+                        transform: translateX(-20px);
+                        opacity: 0;
+                    }
+
+                    &:last-child {
+                        transform: translateY(-3px) rotateZ(-0.125turn);
+                        transform-origin: center;
+                    }
+                }
+            }
+        }
+    }
+}
+/////////////
+// DESKTOP //
+/////////////
+@media (min-width: 650px) {
+    .nav-trailing-items {
+        .nav-links {
+            transform: translateY(0px);
+            opacity: 1;
+            width: max-content;
+
+        }
+
+        .nav-links-mobile {
+            display: none;
+        }
+    
+        button.nav-menu-btn {
+            transform: translateY(-100px);
+            opacity: 0;
+            width: 0px;
+        }
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        scale: 0.98;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes mobile-nav-items-fade {
+    0% {
+        opacity: 0;
+        transform: translateX(100vw)
+    }
+    1% {
+        opacity: 0;
+        transform: translateX(0)
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
